@@ -4,7 +4,6 @@ import "../styles/styles.css";
 
 interface TransitionTableProps {
   automaton: NFA;
-  onClose: () => void;
 }
 
 const TransitionTable: React.FC<TransitionTableProps> = ({ automaton }) => {
@@ -24,9 +23,23 @@ const TransitionTable: React.FC<TransitionTableProps> = ({ automaton }) => {
             Object.entries(transitions as Record<string, number[]>).map(([symbol, toStates]) =>
               toStates.map((to) => (
                 <tr key={`${from}-${symbol}-${to}`}>
-                  <td>{from}</td>
+                  <td className={
+                    from === automaton.initialState.toString()
+                      ? "initial-state"
+                      : automaton.acceptingStates.has(Number(from))
+                      ? "final-state"
+                      : ""
+                  }>
+                    {from}
+                  </td>
                   <td>{symbol}</td>
-                  <td>{to}</td>
+                  <td className={
+                    automaton.acceptingStates.has(to)
+                      ? "final-state"
+                      : ""
+                  }>
+                    {to}
+                  </td>
                 </tr>
               ))
             )

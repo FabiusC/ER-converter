@@ -1,6 +1,6 @@
 import React from "react";
-import { NFA } from "../utils/types";
 import TransitionTable from "./TransitionTable";
+import { NFA } from "../utils/types";
 import "../styles/styles.css";
 
 interface ModalProps {
@@ -16,23 +16,19 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, automaton }) =
   return (
     <div className="modal-overlay">
       <div className="modal-container">
-        
         {/* 📌 Contenedor de dos columnas */}
         <div className="modal-content-wrapper">
-          
-          {/* 📌 Tabla de Transiciones en una columna */}
+          {/* 📌 Tabla de Transiciones en la izquierda */}
           {automaton && <TransitionTable automaton={automaton} />}
 
           {/* 📌 Contenido principal (Gráfico) */}
-          <div className="modal-graph-container">
-            {children}
-          </div>
-
+          <div className="graph-wrapper">{children}</div>
         </div>
 
         {/* 📌 Botón de Cerrar */}
-        <button className="close-button" onClick={onClose}>✖</button>
-
+        <button className="close-modal" onClick={onClose}>
+          ✖
+        </button>
       </div>
     </div>
   );

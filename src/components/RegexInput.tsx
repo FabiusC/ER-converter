@@ -4,7 +4,6 @@ import { isValidRegex } from "../utils/regexValidator";
 import { infixToPostfix } from "../utils/infixToPostfix"; // 📌 Conversión infija a posfija
 import { regexToNFA } from "../utils/thompsonAlgorithm";
 import AutomataViewer from "./AutomataViewer";
-import TransitionTable from "./transitionTable";
 import Modal from "./Modal";
 import { NFA } from "../utils/types";
 import "../styles/styles.css";
@@ -83,19 +82,13 @@ const RegexInput: React.FC<RegexInputProps> = ({
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        automaton={automaton} // ✅ Corregido, pasamos `automaton` en lugar de `generateAutomaton`
+        automaton={automaton}
       >
         {automaton && (
           <AutomataViewer
             automaton={automaton}
             onClose={() => setIsModalOpen(false)}
           />
-        )}
-        {automaton && (
-            <TransitionTable
-              automaton={automaton}
-              onClose={() => setIsModalOpen(false)}
-            />
         )}
       </Modal>
     </div>

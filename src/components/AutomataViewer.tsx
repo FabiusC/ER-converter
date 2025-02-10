@@ -9,10 +9,7 @@ interface AutomataViewerProps {
   onClose: () => void;
 }
 
-const AutomataViewer: React.FC<AutomataViewerProps> = ({
-  automaton,
-  onClose,
-}) => {
+const AutomataViewer: React.FC<AutomataViewerProps> = ({ automaton }) => {
   const mountRef = useRef<HTMLDivElement>(null);
   const [zoom, setZoom] = useState(6);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -233,63 +230,59 @@ const AutomataViewer: React.FC<AutomataViewerProps> = ({
   }, [automaton, zoom, position]);
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        {/* 📌 Viewer y Convenciones */}
-        <div className="viewer-wrapper">
-          <div ref={mountRef} className="automata-container"></div>
+    <div className="graph-container">
+      {/* 📌 Viewer y Convenciones */}
+      <div className="viewer-wrapper">
+        <div ref={mountRef} className="automata-container"></div>
 
-          {/* 📌 Convenciones debajo del gráfico */}
-          <div className="legend">
-            <div className="legend-item">
-              <span className="circle blue"></span>Nodo Inicial
-            </div>
-            <div className="legend-item">
-              <span className="circle red"></span>Nodo Final
-            </div>
-            <div className="legend-item">
-              <span className="circle orange"></span>Nodo Inicial y Final
-            </div>
-            <div className="legend-item">
-              <span className="circle green"></span>Nodo Normal
-            </div>
-          </div>
-          <div > 
-            <button className="btn btn-next">Convertir a AFN</button>
-          </div>
+        {/* 📌 Convenciones debajo del gráfico */}
+        <div className="legend">
+          <div className="legend-item">🔵Nodo Inicial</div>
+          <div className="legend-item">🔴Nodo Final</div>
+          <div className="legend-item">🟠Nodo Inicial y Final</div>
+          <div className="legend-item">🟢Nodo Normal</div>
         </div>
+        <div>
+          <button className="btn btn-next">Convertir a AFN</button>
+        </div>
+      </div>
 
-        {/* 📌 Controles de Zoom y Navegación */}
-        <div className="controls-wrapper">
-          <div className="controls">
-            <button onClick={() => setZoom((z) => Math.max(z - 1, 3))}>
-              🔍 Zoom In
-            </button>
-            <button onClick={() => setZoom((z) => z + 1)}>🔍 Zoom Out</button>
-            <button
-              onClick={() => setPosition({ x: position.x - 1, y: position.y })}
-            >
-              ⬅ Izquierda
-            </button>
-            <button
-              onClick={() => setPosition({ x: position.x + 1, y: position.y })}
-            >
-              ➡ Derecha
-            </button>
-            <button
-              onClick={() => setPosition({ x: position.x, y: position.y + 1 })}
-            >
-              ⬆ Arriba
-            </button>
-            <button
-              onClick={() => setPosition({ x: position.x, y: position.y - 1 })}
-            >
-              ⬇ Abajo
-            </button>
-            <button className="close-modal" onClick={onClose}>
-              ❌ Cerrar
-            </button>
-          </div>
+      {/* 📌 Controles de Zoom y Navegación */}
+      <div className="controls-wrapper">
+        <div className="controls">
+          <button
+            className="btn"
+            onClick={() => setZoom((z) => Math.max(z - 1, 3))}
+          >
+            🔍 Zoom In
+          </button>
+          <button className="btn" onClick={() => setZoom((z) => z + 1)}>
+            🔍 Zoom Out
+          </button>
+          <button
+            className="btn"
+            onClick={() => setPosition({ x: position.x - 1, y: position.y })}
+          >
+            ⬅ Izquierda
+          </button>
+          <button
+            className="btn"
+            onClick={() => setPosition({ x: position.x + 1, y: position.y })}
+          >
+            ➡ Derecha
+          </button>
+          <button
+            className="btn"
+            onClick={() => setPosition({ x: position.x, y: position.y + 1 })}
+          >
+            ⬆ Arriba
+          </button>
+          <button
+            className="btn"
+            onClick={() => setPosition({ x: position.x, y: position.y - 1 })}
+          >
+            ⬇ Abajo
+          </button>
         </div>
       </div>
     </div>
