@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Unión: aUb",
+        "expression": "aUb",
+        "alphabet": [
+            "a",
+            "b"
+        ]
+    },
+    {
+        "name": "Concatenación: a•b•c",
+        "expression": "a•b•c",
+        "alphabet": [
+            "a",
+            "b",
+            "c"
+        ]
+    },
+    {
+        "name": "Kleene Star: (aU(b•c))*",
+        "expression": "(aU(b•c))*",
+        "alphabet": [
+            "a",
+            "b",
+            "c"
+        ]
+    },
+    {
+        "name": "Expresión Compleja: (aU(b•c))*•d",
+        "expression": "(aU(b•c))*•d",
+        "alphabet": [
+            "a",
+            "b",
+            "c",
+            "d"
+        ]
+    }
+]
