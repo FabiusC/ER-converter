@@ -3,7 +3,6 @@ import VirtualKeyboard from "./VirtualKeyboard";
 import { isValidRegex } from "../utils/regexValidator";
 import { infixToPostfix } from "../utils/infixToPostfix"; // 📌 Conversión infija a posfija
 import { regexToNFA } from "../utils/thompsonAlgorithm";
-import AutomataViewer from "./AutomataViewer";
 import Modal from "./Modal";
 import { NFA } from "../utils/types";
 import "../styles/styles.css";
@@ -75,7 +74,7 @@ const RegexInput: React.FC<RegexInputProps> = ({
       />
       <VirtualKeyboard onKeyPress={handleKeyPress} alphabet={alphabet} />
       <button onClick={generateAutomaton} className="btn" disabled={!isValid}>
-        Generar AFN
+        Generar AFN-ε
       </button>
 
       {/* 📌 Modal para mostrar el autómata */}
@@ -83,14 +82,8 @@ const RegexInput: React.FC<RegexInputProps> = ({
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         automaton={automaton}
-      >
-        {automaton && (
-          <AutomataViewer
-            automaton={automaton}
-            onClose={() => setIsModalOpen(false)}
-          />
-        )}
-      </Modal>
+        regex={userExpression}
+      ></Modal>
     </div>
   );
 };

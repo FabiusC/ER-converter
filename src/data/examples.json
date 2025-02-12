@@ -26,13 +26,41 @@
         ]
     },
     {
-        "name": "Expresión Compleja: (aU(b•c))*•d",
+        "name": "Expresión 1: (aU(b•c))*•d",
         "expression": "(aU(b•c))*•d",
         "alphabet": [
             "a",
             "b",
             "c",
             "d"
+        ]
+    },
+    {
+        "name": "Expresión 2: (aUb)*•(cUd)",
+        "expression": "(aUb)*•(cUd)",
+        "alphabet": [
+            "a",
+            "b",
+            "c",
+            "d"
+        ]
+    },
+    {
+        "name": "Expresión 3: ((a•b)*Uc)*",
+        "expression": "((a•b)*Uc)*",
+        "alphabet": [
+            "a",
+            "b",
+            "c"
+        ]
+    },
+    {
+        "name": "Expresión 4: (aUb)*•(bUc)*",
+        "expression": "(aUb)*•(bUc)*",
+        "alphabet": [
+            "a",
+            "b",
+            "c"
         ]
     }
 ]

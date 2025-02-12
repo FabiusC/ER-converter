@@ -155,173 +155,168 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* ====== 🌙 MODAL ====== */
-
-/* ====== 🌙 Modal Overlay ====== */
+/* ====== 🌙 MODAL ============================================================================================================================================================================================= */
+/* 📌 Modal con fondo oscuro */
 .modal-overlay {
     position: fixed;
-    /* 📌 Se mantiene fijo en la pantalla */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
-    /* 📌 Fondo semitransparente */
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
 }
 
-/* 📌 Contenedor del Modal */
+/* 📌 Contenedor principal */
 .modal-container {
     display: flex;
     flex-direction: column;
     background: rgba(20, 20, 20, 0.95);
     padding: 20px;
     border-radius: 10px;
-    width: 100%;
-    max-width: 90vw;
+    width: 90vw;
     height: 90vh;
-    max-height: 90vh;
     overflow: hidden;
     position: relative;
 }
 
-/* 📌 Contenedor del contenido (Se divide en tabla y gráfico) */
+/* 📌 Layout de 3 columnas */
 .modal-content-wrapper {
     display: flex;
     flex-direction: row;
-    height: 100%;
-    width: 100%;
-    gap: 15px;
-    /* 📌 Espacio entre tabla y gráfico */
-}
-
-/* 📌 Contenedor del gráfico */
-.graph-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: start;
     width: 100%;
     height: 100%;
+    gap: 10px;
 }
 
-.viewer-wrapper {
+/* 📌 Columna 1: Tablas (20% de ancho) */
+.tables-column {
     display: flex;
+    width: 20%;
+    min-width: 20%;
     flex-direction: column;
-    width: 75%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
+    gap: 15px;
+    overflow-y: auto;
+    padding: 10px;
 }
 
-/* 📌 Contenedor del Automata */
-.automata-container {
+/* 📌 Tablas de transiciones */
+.table-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+}
+
+.table-container table {
     width: 100%;
-    height: 100%;
+    border-collapse: collapse;
+}
+
+.table-container th,
+.table-container td {
+    border: 1px solid white;
+    padding: 0px;
+    text-align: center;
+}
+
+.table-container th {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 📌 Contenedor de autómatas */
+.automaton-viewer {
+    min-width: 60% !important;
+    height: 90%;
     border: 2px solid white;
     border-radius: 10px;
     background-color: black;
+    padding: 10px;
+    margin-bottom: 15px;
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.automata-container {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+.automata-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+}
+
+/* 📌 Botones de zoom y navegación */
+.controls {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
     justify-content: center;
 }
 
-/* 📌 Leyenda de Colores */
+.controls button {
+    width: auto;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 📌 Leyenda de estados */
 .legend {
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-direction: row;
+    gap: 10px;
     margin-top: 10px;
-    justify-content: center;
 }
 
 .legend-item {
     font-size: 14px;
     color: white;
     background: rgba(255, 255, 255, 0.1);
-    padding: 8px 12px;
+    padding: 5px 10px;
     border-radius: 5px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
 }
 
-/* 📌 Controls */
-.controls-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    max-height: auto;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    justify-content: center;
-    gap: 10px;
-    width: 20%;
-}
-
-/* 📌 Botón de cerrar */
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background-color: red;
+/* 📌 Botones de control */
+.btn-control {
+    background-color: #4CAF50;
     color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 18px;
+    padding: 10px;
+    width: 90%;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 5px;
 }
 
-.close-modal:hover {
-    background-color: darkred;
+.btn-control:hover {
+    background-color: #388E3C;
 }
 
-/* ====== 📌 Estilos de la Tabla ====== */
-.transition-table {
-    width: 25%;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
+/* 📌 Botón rojo para cerrar */
+.close-modal {
+    background-color: #d32f2f;
     color: white;
-    overflow-y: auto;
-    max-height: auto;
-}
-
-.transition-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.transition-table th,
-.transition-table td {
-    border: 1px solid white;
-    padding: 5px;
+    padding: 10px;
+    width: 90%;
+    border-radius: 5px;
+    cursor: pointer;
     text-align: center;
 }
 
-/* 📌 Ajuste para prevenir desbordamiento */
-.transition-table tbody {
-    max-height: 75vh;
-    overflow-y: auto;
-    display: block;
-}
-
-.transition-table thead,
-.transition-table tbody tr {
-    display: table;
-    width: 100%;
-}
-
-/* 📌 Destacar estados iniciales y finales */
-.initial-state {
-    color: cyan;
-    font-weight: bold;
-}
-
-.final-state {
-    color: red;
-    font-weight: bold;
+.close-modal:hover {
+    background-color: #c62828;
 }

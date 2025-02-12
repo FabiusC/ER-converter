@@ -9,7 +9,6 @@ interface TransitionTableProps {
 const TransitionTable: React.FC<TransitionTableProps> = ({ automaton }) => {
   return (
     <div className="transition-table">
-      <h3>Tabla de Transiciones</h3>
       <table>
         <thead>
           <tr>

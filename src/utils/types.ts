@@ -12,12 +12,3 @@ export interface NFA {
   initialState: number; // Estado inicial
   acceptingStates: Set<number>; // Estados de aceptación
 }
-
-/** 📌 Definición del Autómata Finito Determinista (AFD) */
-export interface DFA {
-  states: Set<number>; // Conjunto de estados
-  alphabet: Set<string>; // Alfabeto del autómata
-  transitionTable: { [state: number]: { [symbol: string]: number } }; // Tabla de transiciones sin ε
-  initialState: number; // Estado inicial
-  acceptingStates: Set<number>; // Estados de aceptación
-}
